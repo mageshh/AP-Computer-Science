@@ -1,0 +1,19 @@
+package diceroll;
+public class DiceRoll { 
+	public static void main(String[] args)
+	{ 
+		//Storing the random dice numbers
+		int die1 = rollDie(); //roll of the first die
+		int die2 = rollDie(); //roll of the second die
+	    int total = die1 + die2; //the total of both of the rolls of dice. 
+	    
+	    System.out.println("The first die is " + die1); //printing out the number of the first die
+	    System.out.println("The second die is " + die2); //printing out the number of the second die
+	    System.out.println("You rolled a " + total); //printing out the total of both dice combined 
+	    System.out.println("You rolled a " + die1 + " and a " + die2 + " for a total of " + total); //A full sentence describing above print statements
+	}
+	
+	public static int rollDie() {
+		return (int)(Math.random()*6) + 1; //generating the random number of the dice
+	}
+} 
