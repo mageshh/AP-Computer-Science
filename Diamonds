@@ -1,0 +1,57 @@
+package diamonds;
+import java.util.Scanner; //to import scanner
+
+//class (upper case)
+public class Diamonds { 
+	public static void main(String[] args) {
+		
+  	   	String character_first_name; //Creates string character_last_name
+  	    Scanner user_input = new Scanner(System.in); //creates a Scanner
+    	System.out.print("Enter your character first name: "); //user input for character's first name
+    	character_first_name = user_input.nextLine(); //to print the text that the user typed
+
+    	
+    	String character_last_name; //creates string character_last_name
+    	Scanner character = new Scanner(System.in); //creates a Scanner
+    	System.out.print("Enter your character last name:  "); //user input for character's last name
+    	character_last_name = character.nextLine(); //to print the text that the user typed
+    	
+    	String character_action; //Creates string character_action
+    	Scanner action = new Scanner(System.in); //creates a Scanner
+    	System.out.print("Enter your character actions: "); //user input for character's action
+    	character_action = action.nextLine(); //to print the text that the user typed
+    	
+    	
+    	String diamondchar; //Creates string diamondchar
+    	Scanner diamondchar_input = new Scanner(System.in); //creates a Scanner
+    	System.out.println("Enter a character: "); //user input for the character the user types coming in diamond shape
+    	diamondchar = diamondchar_input.nextLine(); //to print the text that the user typed
+        
+    	
+    	//to print the character's first name, last name, and actions combined in a sentence.
+    	System.out.println("Lets watch " + character_first_name + " " + character_last_name + " " + character_action + " .");
+    	
+    	
+    	//to print the character provided by the user in a diamond shape
+		System.out.println("     " + diamondchar); 
+		System.out.println("    " + diamondchar + diamondchar + diamondchar); 
+		System.out.println("   " + diamondchar + diamondchar + diamondchar + diamondchar + diamondchar); 
+		System.out.println("  " + diamondchar + diamondchar + diamondchar + diamondchar + diamondchar + diamondchar + diamondchar); 
+		System.out.println(" " + diamondchar  + diamondchar  + diamondchar  + diamondchar  + diamondchar + diamondchar  + diamondchar  + diamondchar  + diamondchar); 
+		System.out.println("  " + diamondchar  + diamondchar  + diamondchar  + diamondchar  + diamondchar  + diamondchar  + diamondchar); 
+		System.out.println("   " + diamondchar  + diamondchar  + diamondchar  + diamondchar  + diamondchar); 
+		System.out.println("    " + diamondchar + diamondchar + diamondchar); 
+		System.out.println("     " + diamondchar); 
+    
+		{
+			
+	//to close the Scanners		
+	user_input.close();
+	character.close();
+	action.close();
+	diamondchar_input.close();
+	
+		}
+	}
+
+} //end of Diamond class
