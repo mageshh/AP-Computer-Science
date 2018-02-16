@@ -1,0 +1,143 @@
+package checkerboard;
+
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+/**
+ *  This file can be used to create very simple animations.  Just fill in
+ *  the definition of drawFrame with the code to draw one frame of the 
+ *  animation, and possibly change a few of the values in the rest of
+ *  the program as noted below. Note that if you change the name of the
+ *  class, you must also change the name in the main() routine!
+ *  
+ *  @author     (Your name)
+ *  @version    0.1
+ */
+
+public class Checkboard extends JPanel implements ActionListener {
+
+    /**
+     * Draws one frame of an animation. This subroutine is called every 20
+     * milliseconds and is responsible for redrawing the entire drawing area.  The
+     * parameter g is used for drawing. The frameNumber starts at zero and
+     * increases by 1 each time this subroutine is called.  The parameters width
+     * and height give the size of the drawing area, in pixels.  
+     * The sizes and positions of the rectangles that are drawn depend
+     * on the frame number, giving the illusion of motion.
+     */
+    public void drawFrame(Graphics g, int frameNumber, int width, int height) {
+        /* uncomment the following statement if you want to see a counter that 
+         * reflects the current frameNumber.  You could also use a print statement 
+         * to monitor this or anything wlse in a terminal window. */
+        //g.drawString( "Frame number " + frameNumber, 40, 50 );
+        int numSquares = 0; // change this to reflect the number of squares in each row
+        /* initialize sideDim to a calculated value, based on values of numSquares and 
+         * width. Represents the width of one square on the board. */
+        int sideDim; 
+        
+        int x, y;
+        
+        for (int row = 0;  row < 8;  row++ ) {
+            for (int col = 0;  col < 8;  col++ ) {
+                x = 50*col;
+                y = 50*row;
+                if ( (row % 2) == (col % 2) )
+                   g.setColor(Color.red);
+                else
+                   g.setColor(Color.black);
+                g.fillRect(x,y,50,50);
+            }
+         }
+        
+        /* Write nested FOR loops to generate the squares in each row.  The outer
+         * loop will generate each row, and the inner loop will generate the squares
+         * in each row. The challenge is to determine if a square should be red
+         * or black.  Use g.setColor(Color.RED) to set the drawing color to red.
+         * HINT: if you increment your counter by sideDim each time, you will be
+         * able to use the counter variable and modulus to determine if the square
+         * should be red or black.  Use IF - ELSE statements to set the color based 
+         * on the square's location and then draw the square.
+         * 
+         * If the row increases by 25 each iteration of the loop, then this statement
+         * will resolve to true for even rows: row % 50 == 0
+         * whereas it will be false for odd rows. Note that 50 is 2x 25.
+         */
+        
+        /* OPTIONAL: Animation! This template is animation-ready.  You can cause 
+         * a row to move by generating an offset, based on the value of frameNumber.
+         * Since frameNumber increases by 1 each refresh, you can use 
+         * frameNumber % sideDim to generate an offset that will reset after the 
+         * width of one square.  You will find that you need to work with 
+         * multiples of sideDim in order to make the animation smooth.
+         */
+
+    }
+    
+    //------ Implementation details: DO NOT EXPECT TO UNDERSTAND THIS ------
+    
+    
+    public static void main(String[] args) {
+        
+        /* NOTE:  The string in the following statement goes in the title bar
+         * of the window.
+         */
+        JFrame window = new JFrame("Simple Animation");
+        
+        /*
+         * NOTE: If you change the name of this class, you must change
+         * the name of the class in the next line to match!
+         */
+        Checkboard drawingArea = new Checkboard();
+        
+        drawingArea.setBackground(Color.WHITE);
+        window.setContentPane(drawingArea);
+
+        /* NOTE:  In the next line, the numbers 600 and 450 give the
+         * initial width and height of the drawing array.  You can change
+         * these numbers to get a different size.
+         */
+        drawingArea.setPreferredSize(new Dimension(400,400));
+
+        window.pack();
+        window.setLocation(150,150);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        /*
+         * Note:  In the following line, you can change true to
+         * false.  This will prevent the user from resizing the window,
+         * so you can be sure that the size of the drawing area will
+         * not change.  It can be easier to draw the frames if you know
+         * the size.
+         */
+        window.setResizable(true);
+        
+        /* NOTE:  In the next line, the number 20 gives the time between
+         * calls to drawFrame().  The time is given in milliseconds, where
+         * one second equals 1000 milliseconds.  You can increase this number
+         * to get a slower animation.  You can decrease it somewhat to get a
+         * faster animation, but the speed is limited by the time it takes
+         * for the computer to draw each frame. 
+         */
+        //Timer frameTimer = new Timer(1000,drawingArea);
+
+        window.setVisible(true);
+        //frameTimer.start();
+
+    } // end main
+
+    private int frameNum;
+    
+    public void actionPerformed(ActionEvent evt) {
+        frameNum++;
+        repaint();
+    }
+    
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        drawFrame(g, frameNum, getWidth(), getHeight());
+    }
+
+}
