@@ -1,0 +1,24 @@
+/**
+ * A program for 10 random rolls of dice. 
+ *
+ * @author (Your name)
+ * @date 1/19/18
+ */
+
+	public class DieTest
+	{
+	public static void main (String [] args)
+	{
+		
+		System.out.println("Here are your 10 rolls:"); //printing out message
+		
+		for(int i = 0; i < 10; i++) //repeating it 10 times
+		{
+			Die Die = new Die();
+			System.out.println("The roll was a "); //each roll
+			Die.roll();
+			System.out.println(Die.getFaceValue()); //the number of the roll
+		}
+		
+	}
+}//end of class
