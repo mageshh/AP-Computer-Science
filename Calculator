@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class MyCalc {
+
+    public static void main(String[] args) {
+
+    	double num1, num2; //number 1 and 2 
+        Scanner user_input = new Scanner(System.in);
+        System.out.print("Enter your first number:"); //first number
+
+        
+        num1 = user_input.nextDouble();
+        System.out.print("Enter your second number:"); //second number
+        num2 = user_input.nextDouble();
+
+        System.out.print("What operator do you want? (+, -, *, /): "); //the operation to use
+        char operator = user_input.next().charAt(0); 
+
+        user_input.close(); //close the scanner
+        double result; //result output in double
+
+        switch(operator)
+        {
+            case '+':
+            	result = num1 + num2; //add the two numbers
+                break;
+
+            case '-':
+            	result = num1 - num2; //subtract the two number
+                break;
+
+            case '*':
+            	result = num1 * num2; //multiply the two number
+                break;
+
+            case '/':
+            	result = num1 / num2; //divide the two numbers
+                break;
+
+            default:
+                System.out.printf("You have entered wrong operator"); //if user entered the wrong operation
+                return;
+        }
+
+        System.out.println(num1 + " " + operator + " " + num2 + ": " + result); //printing out the calculation result
+    }
+} //end of class
