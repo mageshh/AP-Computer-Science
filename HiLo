@@ -1,0 +1,46 @@
+package hilo;
+import java.util.Scanner; //import Scanner
+ 
+/**
+ * This is a number guessing game called Hi-Lo
+ *
+ * @(Your name)
+ * @version 0.1
+ */
+ 
+public class HiLo {
+ 
+   public static void main(String[] args) {
+ 
+      Scanner user_input = new Scanner(System.in); //create Scanner
+             
+      int number = (int)(Math.random()*100) + 1; //random number
+      int user_guess = -1;
+       
+      while (user_guess!=number) { //to run the instructions until user gets it right
+    	  System.out.print("Enter a number between 1 and 100: "); 
+    	  System.out.println(number);
+    	  user_guess = user_input.nextInt();
+    	  
+    	  if(user_guess < number) //guess is less than number
+    	  {
+    		  System.out.println("Too low. Take another guess"); //prints message
+    		  user_guess++;
+    	  }
+    	  else if(user_guess > number) //guess is higher than number
+    	  {
+    		  System.out.println("Too high. Take another guess"); //prints message
+    		  user_guess++;
+    	  }
+    	  else //if all of the above evaluates to false
+    	  {
+    		  System.out.println("You got it right. The number was " + number);
+    		  user_guess++;
+    	  }
+      }
+      
+      System.out.println("You guess " + user_guess + " times to get the right number.");
+      user_input.close(); //close Scanner
+   }
+ 
+} //end of class HiLo
