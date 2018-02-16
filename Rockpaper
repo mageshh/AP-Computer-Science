@@ -1,0 +1,105 @@
+package rockpaper;
+import java.util.*; 
+
+/**
+ * A program for playing the Rock-Paper-Scissors game
+ *
+ * @author (your name)
+ * @date 
+ */
+
+public class Rockpaper {
+
+	public static void main(String[] args) {
+		
+		ArrayList<String> list = new ArrayList<String>(); //array for the list
+		
+		//rock, paper, scissor
+		list.add("rock");
+		list.add("paper");
+		list.add("scissors");
+		
+		Scanner user_input = new Scanner(System.in); //creating new Scanner
+		
+		//type for the wins, loses and ties
+		int wins = 0; 
+		int loses = 0;
+		int ties = 0;
+		
+		ArrayList<String> nextRound = new ArrayList<String>(); //array for another round
+		
+		//yes or no in different cases
+		nextRound.add("y");
+		nextRound.add("n");
+		nextRound.add("Y");
+		nextRound.add("N");
+		
+		String repeat = "y";
+		
+		System.out.println("Welcome to the Rock, Paper, Scissors game. Play against the computer in a tough competetion. Good Luck!"); //welcome message for user
+		
+		while(repeat.equalsIgnoreCase("y")) //while loop continues if the user wants to keep playing the game. Ends when user says no.
+		{
+			System.out.println("What do you want to choose? Rock, Paper or Scissors?: "); 
+			String welcome = user_input.nextLine();
+			
+			while(!list.contains(welcome.toLowerCase())) //if user did not type the answer properly
+			{
+				System.out.println("You entered a wrong input. Try again later."); 
+				welcome = user_input.nextLine();
+			}
+			
+			int welcomeIndex = list.indexOf(welcome.toLowerCase());
+			
+			int computer = (int)(Math.random()*3); //random number from which the computer's choice could be used like rock, paper or scissors
+			
+			if (welcomeIndex == computer) //if user and computer's choice is same
+			{
+				System.out.println("It is a tie. Nice try but you can't win me."); //message for tie
+				ties++; //counting the amount of ties
+			}
+			else if (welcomeIndex == 0 && computer == 1 || welcomeIndex == 1 && computer == 2 || welcomeIndex == 2 && computer == 0) //if computer has a better choice compared to user
+			{
+				System.out.println("Haha! I win. I told you that you can never win me. Keep trying if you want to lose again....."); //message for losing
+				loses++; //counting the amount of loses
+			}
+			else //if user has better choice than computer
+			{
+				System.out.println("You won. How is that possible? You can't be smarter than me...."); //message for losing
+				wins++; //counting the amount of wins
+			}
+			
+			System.out.println(); //space
+			System.out.println("Do you want to try again? (Enter y for yes and n for no)"); //asking if user wants to play again
+			repeat = user_input.nextLine();
+			
+			while(!nextRound.contains(repeat)) //if user entered a wrong input
+			{
+				System.out.println("You entered a wrong input. Do you want to play again? (Enter y or n)"); //repeating the question
+				repeat = user_input.nextLine();
+				
+			}
+		}
+		
+		int total = wins + loses + ties; //adding up the amount of times the user played
+		
+		System.out.print("You played a total of " + total + " games with the computer: with " + wins); //message stating the amount of games played with wins, loses and ties
+		
+		if(wins == 1) //if user only won one time, the win would be singular
+			System.out.print(" win, " + loses); 
+		else //if user won more than one time, the win would be plural
+			System.out.print(" wins, " + loses);
+		if(loses == 1) //if user only lost one time, the lose would be singular
+			System.out.print(" lose, and " + ties);
+		else //if user lost more than one time, the lose would be plural
+			System.out.print(" loses, and " + ties);
+		if(ties == 1) //if user only tied one time, the tie would be singular
+			System.out.println(" tie.");
+		else //if user tied more than one time, the ties would be plural
+			System.out.println(" ties.");
+			
+		user_input.close(); //closing the Scanner
+
+	} //end of method
+
+} //end of class
