@@ -1,0 +1,71 @@
+package dollarcount;
+import java.text.NumberFormat; //import Number format
+import java.util.Scanner; //import Scanner
+
+public class Dollarcount { //create a class
+	public static void main(String[] args) //create a method
+	{	
+		
+		int quarters; //number of quarters
+		int dimes; //number of dimes
+		int nickels; //number of nickels
+		int pennies; //number of pennies
+		int dollars; //number of dollars
+		double total; //total money
+		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(); //Number format
+		 
+		String repeat; //creating repeat string
+        Scanner user_input = new Scanner(System.in); //creating Scanner
+        System.out.println("Do you want to count the jar? (Please say yes or no)"); //prompting user for input
+        repeat = user_input.nextLine(); 
+		
+        if(repeat.equalsIgnoreCase("no")) //loop which would stop if the person says 'no'
+        {
+        	System.out.println("Thank you for taking your time! See you soon!"); //farewell to the user
+        }
+        
+		while(repeat.equalsIgnoreCase("yes")) //loop that would repeat the instructions below
+		{
+        
+		System.out.println("How many quarters do you have in the jar? "); //asking how much quarters the user has in the jar
+		quarters = user_input.nextInt(); 
+		user_input.nextLine(); //to print the text that the user typed
+		
+		System.out.println("How many dimes do you have in the jar? "); //asking how much dimes the user has in the jar
+		dimes = user_input.nextInt();
+		user_input.nextLine(); //to print the text that the user typed
+		
+		System.out.println("How many nickels do you have in the jar? "); //asking how much nickels the user has in the jar
+		nickels = user_input.nextInt();
+		user_input.nextLine(); //to print the text that the user typed
+		
+		System.out.println("How many pennies do you have in the jar? "); //asking how much pennies the user has in the jar
+		pennies = user_input.nextInt();
+		user_input.nextLine(); //to print the text that the user typed
+		
+		System.out.println("How many dollar bills do you have? "); //asking how much dollar bills the user has in the jar
+		dollars = user_input.nextInt();
+		user_input.nextLine(); // to print the text that the user typed
+		
+		total = (.25 * quarters) + (.10 * dimes) + (.05 * nickels) + (0.01 *pennies) + dollars; //calculates the total amount of money
+		
+		//printing out the money that the user typed and giving him the total. 
+		System.out.println("You have " + quarters + " quarters in the jar" +
+		"\n" + "You have " + dimes + " dimes in the jar" +"\n" + "You have " 
+		+ nickels + " nickels in the jar" +"\n" + "You have " + pennies + 
+		" pennies in the jar" + "\n" + "You have " + dollars + " dollar bills in the jar" + "\n" +"You have " + currencyFormat.format(total) + " in the jar"); 
+		
+        System.out.println("Do you want to count another jar? "); //asking to count for another time
+        repeat = user_input.nextLine();
+        
+        if(repeat.equalsIgnoreCase("no"))//loop for stopping if person typed 'no'
+        {
+        	System.out.println("Thank you for calculating your money with us.\nWe hope to see you soon. Have a nice day."); //to print out a farewell message
+        }
+        
+		} //end of while loop
+		
+			user_input.close(); //closing the Scanner
+			
+	} //end of method
+} //end of class
