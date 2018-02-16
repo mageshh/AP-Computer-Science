@@ -1,10 +1,8 @@
-package die;
-
 /**
  * A program for rolling 10 random rolls of dice. 
  *
- * @author Harysh Magesh
- * @date 1/19/18
+ * @author   (Your name)
+ * @version  0.1
  */
 
 import java.util.Random;
